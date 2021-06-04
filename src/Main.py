@@ -1,5 +1,5 @@
 from va import va
-from draw import newline
+from draw import drawing 
 
 def main():
     bot = va()
@@ -7,8 +7,7 @@ def main():
 
     while(response != 'bye'):
         bot.reply(response)
-        newline()
-
+        drawing.newline()
         response = input("Enter: ")
 
 if __name__ == '__main__':

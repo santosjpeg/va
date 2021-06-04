@@ -1,16 +1,29 @@
-import nltk
-from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 from debug import debugger
+from responses import Responses
 
 class va:
-    def process(self, res):
-        sentences = sent_tokenize(res)
-        for i in range(len(sentences)):
-            sentences[i] = word_tokenize(sentences[i])
-            debugger.info(sentences[i])
-        return sentences
+    stopWords = set(stopwords.words('english'))
+
+    def parse(self, res):
+        words = word_tokenize(res)
+        return words
+    
+    def clean(self, lines):
+        clean = [] 
+
+        for i in lines:
+            if i not in self.stopWords:
+                clean.append(i)
+        return clean
 
     def reply(self, res):
-        x = self.process(res)
+        lines = self.parse(res)
+        finalLines = self.clean(lines)
+        debugger.info(finalLines) 
 
+        for i in lines:
+            Responses.process(i)
+            
