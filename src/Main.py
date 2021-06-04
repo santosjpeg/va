@@ -1,18 +1,13 @@
-import torch 
-
-import nltk
-from nltk.tokenize import word_tokenize
-
-def reply(res):
-    print('filler')
+from va import va
 
 def main():
+    bot = va()
     while(True):
         response = input("Enter: ")
         if response == 'bye':
             break
         else:
-            reply(response)
+            bot.reply(response)
 
 if __name__ == '__main__':
     main()
