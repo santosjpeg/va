@@ -1,13 +1,15 @@
 from va import va
+from draw import newline
 
 def main():
     bot = va()
-    while(True):
+    response = input("Enter: ")
+
+    while(response != 'bye'):
+        bot.reply(response)
+        newline()
+
         response = input("Enter: ")
-        if response == 'bye':
-            break
-        else:
-            bot.reply(response)
 
 if __name__ == '__main__':
     main()
