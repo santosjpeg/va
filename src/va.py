@@ -1,13 +1,32 @@
-from nltk.corpus import stopwords
+import nltk
 from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+
+from debug import Debug
 
 class va:
-    def clean(self, raw_response):
-        tokens = word_tokenize(raw_response)
-        tokens[0].title()
+    stop_words = set(stopwords.words('english'))
+    debugger = Debug()
 
-        return tokens
+    def process(self, raw_response):
+        tokens = word_tokenize(raw_response)
+
+        cleaned = []
+        for token in tokens:
+            if token not in self.stop_words:
+                cleaned.append(token)
+
+        cleaned_tagged = nltk.pos_tag(cleaned)
+        self.debugger.info("CLEANED + TAGGED: {}".format(cleaned_tagged))
+        
+        chunk_gram = r"""Chunk: {<RB.?>*<VB.?>*<NNP>+<NN>?}"""
+        chunk_parser = nltk.RegexpParser(chunk_gram)
+        chunked = chunk_parser.parse(cleaned_tagged)
+
+        for subtree in chunked.subtrees(filter=lambda t: t.label() == 'Chunk'):
+            self.debugger.info(subtree)
+        
+        return cleaned_tagged
 
     def respond(self, cleaned_response):
         pass
