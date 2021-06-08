@@ -1,4 +1,4 @@
-class drawing:
+class Draw:
     @staticmethod
-    def newline(): 
+    def new_line():
         print()
