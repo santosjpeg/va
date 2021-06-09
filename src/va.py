@@ -1,6 +1,7 @@
 """
 To-do List:
-    - lorem
+    - Replace conditional statements in respond() method to comparing RegEx structure
+    - Start bs4 implementation for scraping information on a person's birthday for birthday()
 
 Changelog:
     -- 1.3.2
@@ -22,7 +23,6 @@ from function import Function
 
 class va(Function):
     stop_words = set(stopwords.words('english'))
-    debugger = Debug()
 
     def process(self, raw_response):
         tokens = word_tokenize(raw_response)
@@ -37,7 +37,7 @@ class va(Function):
         return cleaned_tagged
 
     def respond(self, cleaned):
-        self.debugger.info(cleaned)
+        Debug.info(cleaned)
         words = []
         for i in range(len(cleaned)):
             pos_pair = cleaned[i]

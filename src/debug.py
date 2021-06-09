@@ -1,6 +1,8 @@
 class Debug:
-    def info(self, log):
+    @staticmethod
+    def info( log):
         print("INFO: {}".format(log))
 
-    def debug(self, log):
+    @staticmethod
+    def debug( log):
         print("DEBUG: {}".format(log))
