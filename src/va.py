@@ -1,32 +1,35 @@
+"""
+To-do List:
+    - Replace RegEx chunking with Natural Entity Recognition to emphasize proper nouns.
+    - Implement chunking in respond() function for more accurate conditionals.
+
+Changelog:
+    - 1.3.2: Took away chunking and implemented simple look_up() function to find definitions of words
+    - 1.3.1: Created debugging and drawing utilities + RegEx parsing for chunking user responses.
+    - 1.2.0: Cleans user input with stop words and part of speech (POS) tagging.
+    - 1.1.0: Initially released with only word tokenization.
+"""
+
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
 from debug import Debug
+from function import Function
 
-class va:
+class va(Function):
     stop_words = set(stopwords.words('english'))
     debugger = Debug()
 
     def process(self, raw_response):
         tokens = word_tokenize(raw_response)
-
         cleaned = []
         for token in tokens:
             if token not in self.stop_words:
                 cleaned.append(token)
+        return cleaned
 
-        cleaned_tagged = nltk.pos_tag(cleaned)
-        self.debugger.info("CLEANED + TAGGED: {}".format(cleaned_tagged))
+    def respond(self, cleaned):
+        if "define" in cleaned: 
+            Function.look_up(cleaned[-1])
         
-        chunk_gram = r"""Chunk: {<RB.?>*<VB.?>*<NNP>+<NN>?}"""
-        chunk_parser = nltk.RegexpParser(chunk_gram)
-        chunked = chunk_parser.parse(cleaned_tagged)
-
-        for subtree in chunked.subtrees(filter=lambda t: t.label() == 'Chunk'):
-            self.debugger.info(subtree)
-        
-        return cleaned_tagged
-
-    def respond(self, cleaned_response):
-        pass
