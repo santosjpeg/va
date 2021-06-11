@@ -1,6 +1,15 @@
 import nltk
+from nltk.corpus import stopwords
+
+from debug import Debug
 
 class Utils:
+    stop_words = set(stopwords.words('english'))
+
+    @staticmethod
+    def new_line():
+        print()
+
     @staticmethod
     def traverse_nltk_tree(user_input):
         cont = []
@@ -17,4 +26,3 @@ class Utils:
             else:
                 continue
             return cont
-        Debug.info("FOUND BIRTH MONTH - {}".format(birth_month))

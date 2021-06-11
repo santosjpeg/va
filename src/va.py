@@ -1,7 +1,6 @@
 """
 To-do List:
     - Replace conditional statements in respond() method to comparing RegEx structure
-    - Start bs4 implementation for scraping information on a person's birthday for birthday()
 
 Changelog:
     -- 1.3.2
@@ -16,36 +15,29 @@ Changelog:
 
 import nltk
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 
 from debug import Debug
-from function import Function
+from questions import Questions
+from utils import Utils
 
-class va(Function):
-    stop_words = set(stopwords.words('english'))
+class va(Questions):
 
     def process(self, raw_response):
         tokens = word_tokenize(raw_response)
         cleaned = []
 
         for token in tokens:
-            if token not in self.stop_words:
+            if token not in Utils.stop_words:
                 cleaned.append(token)
 
-        cleaned_tagged = nltk.pos_tag(cleaned)
-        
-        return cleaned_tagged
+        return cleaned
 
     def respond(self, cleaned):
         Debug.info(cleaned)
-        words = []
-        for i in range(len(cleaned)):
-            pos_pair = cleaned[i]
-            words.append(pos_pair[0])
-
-        if "define" in words: 
-            word_of_interest = words[-1]
-            Function.look_up(word_of_interest)
-        elif "birthday" in words:
-            Function.birthday(cleaned)
+        if "define" in cleaned or "Define" in cleaned:
+            Questions.look_up(cleaned)
+        elif "birthday" in cleaned:
+            Questions.birthday(cleaned)
+        elif "who" in cleaned or "Who" in cleaned:
+            Questions.who(cleaned)
         

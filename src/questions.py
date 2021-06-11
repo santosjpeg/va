@@ -1,5 +1,5 @@
 from define import Define
 from people import People
 
-class Function(Define, People):
+class Questions(Define, People):
     pass
