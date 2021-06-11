@@ -1,7 +1,6 @@
 """
 To-do List:
     - Replace conditional statements in respond() method to comparing RegEx structure
-    - Start bs4 implementation for scraping information on a person's birthday for birthday()
 
 Changelog:
     -- 1.3.2
@@ -37,7 +36,6 @@ class va(Function):
         return cleaned_tagged
 
     def respond(self, cleaned):
-        Debug.info(cleaned)
         words = []
         for i in range(len(cleaned)):
             pos_pair = cleaned[i]
