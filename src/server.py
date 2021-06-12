@@ -21,8 +21,7 @@ class Server:
             bot.respond(clean_response)
             Utils.new_line()
 
-            Debug.info("CLOSING SERVER...")
-
+        Debug.info("CLOSING SERVER...")
         self.is_running = False
     
     def get_is_running(self):

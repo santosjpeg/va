@@ -41,19 +41,6 @@ class va(Questions):
         return cleaned
 
     def respond(self, cleaned):
-<<<<<<< HEAD
-        words = []
-        for i in range(len(cleaned)):
-            pos_pair = cleaned[i]
-            words.append(pos_pair[0])
-
-        if "define" in words: 
-            word_of_interest = words[-1]
-            Function.look_up(word_of_interest)
-        elif "birthday" in words:
-            Function.birthday(cleaned)
-        
-=======
         Debug.info(cleaned)
         if "?" in cleaned:
             Debug.info("This is a question...")
@@ -77,4 +64,3 @@ class va(Questions):
             Debug.info("This is NOT a question...")
             if "define" in cleaned or "Define" in cleaned:
                 Statements.look_up(cleaned)
->>>>>>> dev

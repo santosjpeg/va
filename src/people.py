@@ -18,22 +18,8 @@ class People:
 
         person_name = Utils.return_proper_noun(user_input)
 
-<<<<<<< HEAD
-        person_name = Utils.traverse_nltk_tree(ne_chunked)[0]
-
-        wiki_page = wiki_obj.page(person_name)
-=======
         wiki_page = cls.wiki_obj.page(person_name)
->>>>>>> dev
-        existence = "FOUND" if wiki_page.exists() else "NOT FOUND"
-        
-<<<<<<< HEAD
-        summary = tokenizer.tokenize(wiki_page.summary[0:100])
-=======
         summary = cls.tokenizer.tokenize(wiki_page.summary[0:100])
-        Debug.info(summary)
->>>>>>> dev
-
         birth_month = None
         index_of_month = None
         for i in cls.months:
