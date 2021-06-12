@@ -43,6 +43,7 @@ up more free time I can get rid of unnecessary libraries.
 Requirement: python3 and pip3 installed alongside capability of making python virtual environments. <br />
 
 1. Clone or fork this repo and `cd` into the directory
-2. `cd` into env/ directory and `source va/bin/activate`
-3. Install all dependencies with `pip3 install -r requirements.txt` 
-4. `cd ../src` to start developing!
+2. `mkdir env` and `cd` into it 
+3. Create virtual environment using this command: `python -m venv va` 
+4. Install all dependencies with `pip3 install -r ../requirements.txt` 
+5. `cd src/` to start developing!
