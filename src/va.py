@@ -1,23 +1,7 @@
 """
-To-do List:
-<<<<<<< HEAD
-    - Replace conditional statements in respond() method to comparing RegEx structure
-
-=======
-    - Start voice recognition!!!
-    - Utilize weather and geolocation APIs to develop weather function(s)
->>>>>>> dev
-Changelog:
-    -- 1.3.3
-        Implemented birthday() function to look up a famous person's birthday and simple date commands.
-    -- 1.3.2
-        Took away chunking and implemented simple look_up() function to find definitions of words.
-    -- 1.3.1
-        Created debugging and drawing utilities + RegEx parsing for chunking user responses.
-    -- 1.2.0
-        Cleans user input with stop words and part of speech (POS) tagging.
-    -- 1.1.0
-        Initially released with only word tokenization.
+To-Do List:
+    - Search for best Weather API to request and scrape information from for weather functionality
+    - IMPLEMENT SPEECH RECOGNITION!!!
 """
 
 import nltk

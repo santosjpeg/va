@@ -49,9 +49,6 @@ class Utils:
     @staticmethod
     def get_time():
         today = dt.today()
-        hour = today.hour 
-        minute = today.minute
-
         return "{}:{} {}".format( 
                 today.hour - 12 if today.hour > 12 else today.hour,
                 "0{}".format(today.minute) if today.minute < 10 else today.minute,
