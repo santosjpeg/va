@@ -16,14 +16,7 @@ class People:
     @classmethod
     def birthday(cls,user_input):
 
-        ne_tagged = nltk.pos_tag(user_input)
-        ne_chunked = nltk.ne_chunk(ne_tagged, binary=True)
-
-        raw_name = [chunk for chunk in ne_chunked.subtrees(filter=lambda t: t.label() == "NE")]
-
-        Debug.info("Raw nltk.tree.Tree data for named entity - {}".format(raw_name))
-
-        person_name = Utils.traverse_nltk_tree(ne_chunked)[0]
+        person_name = Utils.return_proper_noun(user_input)
 
         wiki_page = cls.wiki_obj.page(person_name)
         existence = "FOUND" if wiki_page.exists() else "NOT FOUND"
@@ -50,14 +43,8 @@ class People:
 
     @classmethod
     def who(cls,user_input):
-        ne_tagged = nltk.pos_tag(user_input)
-        ne_chunked = nltk.ne_chunk(ne_tagged, binary=True)
 
-        raw_name = [chunk for chunk in ne_chunked.subtrees(filter=lambda t: t.label() == "NE")]
-
-        Debug.info("Raw nltk.tree.Tree data for named entity - {}".format(raw_name))
-
-        person_name = Utils.traverse_nltk_tree(ne_chunked)[0]
+        person_name = Utils.return_proper_noun(user_input)
 
         wiki_page = cls.wiki_obj.page(person_name)
         existence = "FOUND" if wiki_page.exists() else "NOT FOUND"

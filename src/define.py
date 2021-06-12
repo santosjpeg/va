@@ -10,6 +10,6 @@ class Define:
         definition = syns[0].definition()
 
         try:
-            print("Definition of {}: {}".format(word_of_interest, definition))
+            print("Definition of {}: {}.".format(word_of_interest, definition))
         except IndexError:
             print("NO WORD FOUND")

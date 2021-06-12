@@ -1,7 +1,7 @@
 """
 To-do List:
+    - Utilize weather and geolocation APIs to develop weather function(s)
     - Replace conditional statements in respond() method to comparing RegEx structure
-
 Changelog:
     -- 1.3.2
         Took away chunking and implemented simple look_up() function to find definitions of words
@@ -18,6 +18,7 @@ from nltk.tokenize import word_tokenize
 
 from debug import Debug
 from questions import Questions
+from statements import Statements
 from utils import Utils
 
 class va(Questions):
@@ -34,10 +35,15 @@ class va(Questions):
 
     def respond(self, cleaned):
         Debug.info(cleaned)
-        if "define" in cleaned or "Define" in cleaned:
-            Questions.look_up(cleaned)
-        elif "birthday" in cleaned:
-            Questions.birthday(cleaned)
-        elif "who" in cleaned or "Who" in cleaned:
-            Questions.who(cleaned)
-        
+        if "?" in cleaned:
+            Debug.info("This is a question...")
+            if "birthday" in cleaned:
+                Questions.birthday(cleaned)
+            elif "who" in cleaned or "Who" in cleaned:
+                Questions.who(cleaned)
+            elif "weather" in cleaned:
+                Questions.current_forecast(cleaned)
+        elif "." in cleaned:
+            Debug.info("This is NOT a question...")
+            if "define" in cleaned or "Define" in cleaned:
+                Statements.look_up(cleaned)

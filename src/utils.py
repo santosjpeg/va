@@ -26,3 +26,11 @@ class Utils:
             else:
                 continue
             return cont
+
+    @staticmethod
+    def return_proper_noun(user_input):
+        tagged_input = nltk.pos_tag(user_input)
+        named_entity_chunked = nltk.ne_chunk(tagged_input, binary=True)
+        proper_noun = Utils.traverse_nltk_tree(named_entity_chunked)
+        return proper_noun[0]
+
