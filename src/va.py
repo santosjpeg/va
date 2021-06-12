@@ -43,6 +43,8 @@ class va(Questions):
                 Questions.who(cleaned)
             elif "weather" in cleaned:
                 Questions.current_forecast(cleaned)
+            elif "time" in cleaned:
+                Questions.tell_time(cleaned)
         elif "." in cleaned:
             Debug.info("This is NOT a question...")
             if "define" in cleaned or "Define" in cleaned:
