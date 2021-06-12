@@ -7,28 +7,36 @@ from utils import Utils
 from debug import Debug
 
 class People:
-    @staticmethod
-    def birthday(user_input):
-        months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-        tokenizer = RegexpTokenizer(r'\w+')
-        wiki_obj = wiki.Wikipedia(
-                language="en",
-                )
+    months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    tokenizer = RegexpTokenizer(r'\w+')
+    wiki_obj = wiki.Wikipedia(
+            language="en",
+            )
 
-        ne_chunked = nltk.ne_chunk(user_input, binary=True)
+    @classmethod
+    def birthday(cls,user_input):
 
-        raw_name = [chunk for chunk in ne_chunked.subtrees(filter=lambda t: t.label() == "NE")]
+        person_name = Utils.return_proper_noun(user_input)
 
+<<<<<<< HEAD
         person_name = Utils.traverse_nltk_tree(ne_chunked)[0]
 
         wiki_page = wiki_obj.page(person_name)
+=======
+        wiki_page = cls.wiki_obj.page(person_name)
+>>>>>>> dev
         existence = "FOUND" if wiki_page.exists() else "NOT FOUND"
         
+<<<<<<< HEAD
         summary = tokenizer.tokenize(wiki_page.summary[0:100])
+=======
+        summary = cls.tokenizer.tokenize(wiki_page.summary[0:100])
+        Debug.info(summary)
+>>>>>>> dev
 
         birth_month = None
         index_of_month = None
-        for i in months:
+        for i in cls.months:
             for j in range(len(summary)):
                 if i == summary[j]:
                     birth_month = i
@@ -40,6 +48,20 @@ class People:
             person_name += "'s"
         print("{} birthday is {} {}, {}".format(person_name, birth_month, summary[index_of_month + 1], summary[index_of_month + 2]))
 
-    @staticmethod
-    def who(user_input):
-        pass
+    @classmethod
+    def who(cls,user_input):
+
+        person_name = Utils.return_proper_noun(user_input)
+
+        wiki_page = cls.wiki_obj.page(person_name)
+        existence = "FOUND" if wiki_page.exists() else "NOT FOUND"
+        Debug.info("Looking up {}... {}.".format(person_name, existence))
+        
+        summary = wiki_page.summary[0:150] 
+
+        print("{}...".format(summary))
+        print("For more information. click this link: {}".format(wiki_page.fullurl))
+
+    @staticmethod 
+    def user_birthday():
+        print("Happy birthday!")

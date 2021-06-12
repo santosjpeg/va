@@ -1,10 +1,17 @@
 """
 To-do List:
+<<<<<<< HEAD
     - Replace conditional statements in respond() method to comparing RegEx structure
 
+=======
+    - Start voice recognition!!!
+    - Utilize weather and geolocation APIs to develop weather function(s)
+>>>>>>> dev
 Changelog:
+    -- 1.3.3
+        Implemented birthday() function to look up a famous person's birthday and simple date commands.
     -- 1.3.2
-        Took away chunking and implemented simple look_up() function to find definitions of words
+        Took away chunking and implemented simple look_up() function to find definitions of words.
     -- 1.3.1
         Created debugging and drawing utilities + RegEx parsing for chunking user responses.
     -- 1.2.0
@@ -15,27 +22,26 @@ Changelog:
 
 import nltk
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
 
 from debug import Debug
-from function import Function
+from questions import Questions
+from statements import Statements
+from utils import Utils
 
-class va(Function):
-    stop_words = set(stopwords.words('english'))
+class va(Questions):
 
     def process(self, raw_response):
         tokens = word_tokenize(raw_response)
         cleaned = []
 
         for token in tokens:
-            if token not in self.stop_words:
+            if token not in Utils.stop_words:
                 cleaned.append(token)
 
-        cleaned_tagged = nltk.pos_tag(cleaned)
-        
-        return cleaned_tagged
+        return cleaned
 
     def respond(self, cleaned):
+<<<<<<< HEAD
         words = []
         for i in range(len(cleaned)):
             pos_pair = cleaned[i]
@@ -47,3 +53,28 @@ class va(Function):
         elif "birthday" in words:
             Function.birthday(cleaned)
         
+=======
+        Debug.info(cleaned)
+        if "?" in cleaned:
+            Debug.info("This is a question...")
+            if "birthday" in cleaned:
+                if "my" in cleaned:
+                    Questions.user_birthday()
+                else:
+                    Questions.birthday(cleaned)
+            elif "who" in cleaned or "Who" in cleaned:
+                Questions.who(cleaned)
+            elif "weather" in cleaned:
+                Questions.current_forecast(cleaned)
+            elif "time" in cleaned:
+                Questions.tell_time()
+            elif "day" in cleaned:
+                if "week" not in cleaned:
+                    Questions.tell_day()
+                else:
+                    Questions.tell_day_of_week()
+        elif "." in cleaned:
+            Debug.info("This is NOT a question...")
+            if "define" in cleaned or "Define" in cleaned:
+                Statements.look_up(cleaned)
+>>>>>>> dev
