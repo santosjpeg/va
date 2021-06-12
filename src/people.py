@@ -54,3 +54,7 @@ class People:
 
         print("{}...".format(summary))
         print("For more information. click this link: {}".format(wiki_page.fullurl))
+
+    @staticmethod 
+    def user_birthday():
+        print("Happy birthday!")

@@ -1,9 +1,12 @@
 """
 To-do List:
+    - Start voice recognition!!!
     - Utilize weather and geolocation APIs to develop weather function(s)
 Changelog:
+    -- 1.3.3
+        Implemented birthday() function to look up a famous person's birthday and simple date commands.
     -- 1.3.2
-        Took away chunking and implemented simple look_up() function to find definitions of words
+        Took away chunking and implemented simple look_up() function to find definitions of words.
     -- 1.3.1
         Created debugging and drawing utilities + RegEx parsing for chunking user responses.
     -- 1.2.0
@@ -37,7 +40,10 @@ class va(Questions):
         if "?" in cleaned:
             Debug.info("This is a question...")
             if "birthday" in cleaned:
-                Questions.birthday(cleaned)
+                if "my" in cleaned:
+                    Questions.user_birthday()
+                else:
+                    Questions.birthday(cleaned)
             elif "who" in cleaned or "Who" in cleaned:
                 Questions.who(cleaned)
             elif "weather" in cleaned:
