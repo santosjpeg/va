@@ -1,7 +1,6 @@
 """
 To-do List:
     - Utilize weather and geolocation APIs to develop weather function(s)
-    - Replace conditional statements in respond() method to comparing RegEx structure
 Changelog:
     -- 1.3.2
         Took away chunking and implemented simple look_up() function to find definitions of words
@@ -44,7 +43,12 @@ class va(Questions):
             elif "weather" in cleaned:
                 Questions.current_forecast(cleaned)
             elif "time" in cleaned:
-                Questions.tell_time(cleaned)
+                Questions.tell_time()
+            elif "day" in cleaned:
+                if "week" not in cleaned:
+                    Questions.tell_day()
+                else:
+                    Questions.tell_day_of_week()
         elif "." in cleaned:
             Debug.info("This is NOT a question...")
             if "define" in cleaned or "Define" in cleaned:

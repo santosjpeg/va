@@ -1,3 +1,6 @@
+import datetime
+from datetime import datetime as dt
+
 import nltk
 from nltk.corpus import stopwords
 
@@ -33,4 +36,24 @@ class Utils:
         named_entity_chunked = nltk.ne_chunk(tagged_input, binary=True)
         proper_noun = Utils.traverse_nltk_tree(named_entity_chunked)
         return proper_noun[0]
+    
+    @staticmethod
+    def get_day():
+        today = dt.today()
+        month = today.strftime("%B") 
+        day = today.day
+        year = today.year
 
+        return "{} {}, {}".format(month, day, year)
+
+    @staticmethod
+    def get_time():
+        today = dt.today()
+        hour = today.hour 
+        minute = today.minute
+
+        return "{}:{} {}".format( 
+                today.hour - 12 if today.hour > 12 else today.hour,
+                "0{}".format(today.minute) if today.minute < 10 else today.minute,
+                "A.M." if today.hour < 12 else "P.M."
+                )

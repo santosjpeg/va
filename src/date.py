@@ -2,20 +2,20 @@ from debug import Debug
 
 import datetime
 from datetime import datetime as dt
+from utils import Utils
 
 class Date:
     @staticmethod
-    def tell_time(user_input):
-        current_time = dt.today()
-        current_hour = current_time.hour
-        current_minute = current_time.minute 
-
-        final_time = "{}:{} {}".format(current_hour if current_hour < 12 else current_hour - 12,
-                "0{}".format(current_minute) if current_minute < 10 else current_minute,
-                "A.M." if current_hour < 12 else "P.M.")
-
-        print("It is currently {}".format(final_time))
+    def tell_time():
+        current_time = Utils.get_time()
+        print("It is {}".format(current_time))
 
     @staticmethod
-    def tell_timezone(user_input):
-        pass
+    def tell_day():
+        current_day = Utils.get_day()
+        print("Today's date is {}".format(current_day))
+
+    @staticmethod
+    def tell_day_of_week():
+        day_of_week = dt.today().strftime('%A')
+        print("Today is a {}".format(day_of_week))
