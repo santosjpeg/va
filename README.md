@@ -1,5 +1,4 @@
-# Project VA - An Indie Virtual Assistant
-A personal voice assistant using ML and speech recognition technologies.
+# Project VA - An Indie Virtual Assistant A personal voice assistant using ML and speech recognition technologies.
 
 ## Changelog
 1.3.3:
@@ -45,5 +44,6 @@ Requirement: python3 and pip3 installed alongside capability of making python vi
 1. Clone or fork this repo and `cd` into the directory
 2. `mkdir env` and `cd` into it 
 3. Create virtual environment using this command: `python -m venv va` 
-4. Install all dependencies with `pip3 install -r ../requirements.txt` 
-5. `cd src/` to start developing!
+4. Enter virtual environment via `source va/bin/activate`
+5. Install all dependencies with `pip3 install -r ../requirements.txt` 
+6. `cd src/` to start developing!
