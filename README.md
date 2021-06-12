@@ -1,4 +1,5 @@
-# Project VA - An Indie Virtual Assistant A personal voice assistant using ML and speech recognition technologies.
+# Project VA - An Indie Virtual Assistant
+A personal voice assistant using ML and speech recognition technologies.
 
 ## Changelog
 1.3.3:
