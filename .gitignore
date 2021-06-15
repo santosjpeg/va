@@ -1,4 +1,4 @@
 env/**
 src/__pycache__/**
 .git/**
-src/vars.py
+src/_vars.py

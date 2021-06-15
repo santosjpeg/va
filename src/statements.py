@@ -1,3 +1,5 @@
 from define import Define
-class Statements(Define):
+from people import People
+
+class Statements(Define,People):
     pass

@@ -1,5 +1,7 @@
 import speech_recognition as sr
 
+from datetime import datetime as dt
+
 from va import va
 from utils import Utils
 from debug import Debug
@@ -10,8 +12,8 @@ class Server:
     def start(self):
         self.is_running = True
         bot = va()
+        Debug.debug("STARTING SERVER...")
         while True:
-            Debug.info("STARTING SERVER...")
             Debug.info("Running SpeechRecognition library version {}".format(sr.__version__))
 
             response = input("Enter: ")
@@ -21,7 +23,7 @@ class Server:
             bot.respond(clean_response)
             Utils.new_line()
 
-        Debug.info("CLOSING SERVER...")
+        Debug.debug("CLOSING SERVER...")
         self.is_running = False
     
     def get_is_running(self):
