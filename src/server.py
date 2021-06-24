@@ -8,11 +8,13 @@ from debug import Debug
 
 class Server:
     is_running = False
+    start_time = Utils.get_time(dt.today())
 
     def start(self):
         self.is_running = True
         bot = va()
         Debug.debug("STARTING SERVER...")
+        Debug.info("INIT TIME {}".format(self.start_time))
         while True:
             Debug.info("Running SpeechRecognition library version {}".format(sr.__version__))
 

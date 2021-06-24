@@ -4,6 +4,7 @@ A personal voice assistant using ML and speech recognition technologies.
 ## Changelog
 1.3.3:
 * Early build of birthday() function (depended on Wikipedia-API library) completed.
+* Finished early build of weather functionality pulling requests from an openweather API.
 
 1.3.2:
 * Removed part of speech/named entity recognition and RegEx chunking during initial cleaning of user response.
@@ -27,7 +28,7 @@ A personal voice assistant using ML and speech recognition technologies.
 ## Caveats
 * As of right now, speech recognition has not been implemented just yet. So, it is currently a *chatbot* with 
 web scraping capabilities.
-* This is in very EARLY EARLY ALPHA build, so by no means is the codebase robust.
+* This is in very EARLY EARLY build, so by no means is the codebase robust.
 * The most early versions of the requirements.txt document will be a copy and paste of `pip3 list`, as I open
 up more free time I can get rid of unnecessary libraries.
 

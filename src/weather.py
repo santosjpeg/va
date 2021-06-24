@@ -21,3 +21,12 @@ class Weather:
         description = weather_desc["description"]
 
         print("In {}, there is {} with a temperature of {}° F.".format(location,description, temperature))
+
+    @classmethod
+    def current_forecast(cls, input):
+        location = Utils.return_proper_noun(input)
+
+        Debug.info("Searching the weather in {}...".format(location))
+        response = requests.get("pro.openweathermap.org/data/2.5/forecast/hourly?q={}&appid={}".format(location, OPENWEATHER_KEY))
+
+        response_json = response.json()

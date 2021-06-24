@@ -47,10 +47,10 @@ class Utils:
         return "{} {}, {}".format(month, day, year)
 
     @staticmethod
-    def get_time():
-        today = dt.today()
-        return "{}:{} {}".format( 
-                today.hour - 12 if today.hour > 12 else today.hour,
-                "0{}".format(today.minute) if today.minute < 10 else today.minute,
-                "A.M." if today.hour < 12 else "P.M."
-                )
+    def get_time(time):
+        time_hour = time.hour
+        time_minute = "0{}".format(time.minute) if time.minute < 10 else time.minute
+        time_second = "0{}".format(time.second) if time.second < 10 else time.second
+
+        return "{}:{}:{}".format(time_hour,time_minute,time_second)
+

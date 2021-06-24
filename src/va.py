@@ -1,10 +1,9 @@
 """
 To-Do List:
-    - Search for best Weather API to request and scrape information from for weather functionality
     - IMPLEMENT SPEECH RECOGNITION!!!
+    - Add simple text to speech for alpha-build voice
 """
 
-import nltk
 from nltk.tokenize import word_tokenize
 
 from debug import Debug
@@ -44,7 +43,11 @@ class va(Questions):
                     Questions.tell_day()
                 else:
                     Questions.tell_day_of_week()
+            else:
+                print("Sorry, I do not know that one.")
         elif "." in cleaned:
             Debug.info("This is NOT a question...")
             if "define" in cleaned or "Define" in cleaned:
                 Statements.look_up(cleaned)
+            else:
+                print("I did not understand you. Could you say it again?")

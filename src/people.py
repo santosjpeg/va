@@ -28,11 +28,10 @@ class People:
                     birth_month = i
                     index_of_month = j
 
-        if person_name[-1] == 's':
-            person_name += "'"
-        else:
-            person_name += "'s"
-        print("{} birthday is {} {}, {}".format(person_name, birth_month, summary[index_of_month + 1], summary[index_of_month + 2]))
+        person_name += "'" if person_name[-1] == 's' else "'s"
+        print("{} birthday is {} {}, {}".format(person_name, birth_month,
+            summary[index_of_month + 1],
+            summary[index_of_month + 2]))
 
     @classmethod
     def who(cls,user_input):
